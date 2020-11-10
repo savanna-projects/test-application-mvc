@@ -1,0 +1,376 @@
+﻿@{
+    ViewData["Title"] = "UI Controls v10";
+}
+
+<script>
+    $(document).ready(function () {
+        const $valueSpan = $('#input_range_outcome');
+        const $value = $('#input_range');
+        $valueSpan.html($value.val());
+        $value.on('input change', function() {
+            $valueSpan.html($value.val());
+        });
+    });
+</script>
+
+<div class="jumbotron">
+    <h1 class="display-3">HTML User Interface Controls</h1>
+    <p class="lead">
+        This page was designed for testing purposes and it free to use.
+        The base source code is on <a href="https://github.com/sroei/automation-course-selenium" target="_blank">This GitHub Repository</a>.
+    </p>
+    
+    <hr class="my-4">
+    
+    <p>Web Controllers for Automation Testing. This is ASP.NET Application with Razor Pages and Bootstrap.</p>
+    
+    <p class="lead">
+        <a class="btn btn-primary" href="https://github.com/gravity-api/gravity-actions/wiki" role="button" target="_blank">Learn More</a>
+    </p>
+</div>
+
+<div class="form-group">
+    <div class="alert-info p-2">
+        <h4>DIV</h4>
+        <div>For attributes and inner text testing.</div>
+    </div>
+    <br />
+
+    <div class="form-group col-3">
+        <div id="attribute_div" number="10" class="text-info">Attributes</div>
+        <div id="text_div_number" name="number for testing" class="text-info">10</div>
+        <div id="text_div" name="text for testing" class="text-info">Foo Bar</div>
+        <div id="url_div" name="url for testing" class="text-info">https://gravitymvctestapplication.azurewebsites.net/</div>
+        <a id="url_a" href="https://gravitymvctestapplication.azurewebsites.net/" class="text-info">Click Here</a>
+        <div id="url_div_text" name="url for testing" class="text-info">Address: https://gravitymvctestapplication.azurewebsites.net/</div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="alert-info p-2">
+        <h4>ELEMENT STATE</h4>
+        <div>For element state (enabled, visible, etc.) and behavior testing.</div>
+    </div>
+
+    <div class="form-group col-3 mt-2">
+        <input type="text" class="form-control" placeholder="disabled input" id="input_disabled" disabled />
+    </div>
+
+    <div class="form-group col-3">
+        <input type="text" class="form-control" placeholder="enabled input" id="input_enabled" />
+    </div>
+
+    <div class="form-group col-3">
+        <input type="text" class="form-control" placeholder="enabled input with text" id="input_enabled_with_text" value="Lorem ipsum dolor" />
+    </div>
+
+    <div class="form-group pl-3 w-50">
+        <textarea class="form-control" style="white-space: pre;" id="text_area_enabled" name="enabled text area" rows="5" onscroll="setElementScroll()">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.
+Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
+Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.
+Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc
+        </textarea>
+    </div>
+
+    <div class="d-flex flex-md-row flex-column col-3 mt-3">
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Y</span>
+                </div>
+                <input type="text" class="form-control" id="e_scroll_y_outcome" />
+            </div>
+        </div>
+
+        <div class="form-group ml-2">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">X</span>
+                </div>
+                <input type="text" class="form-control" id="e_scroll_x_outcome" />
+            </div>
+        </div>
+
+        <div class="form-group ml-2">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="e_text_area_selected" disabled>
+                <label class="custom-control-label" for="e_text_area_selected">Text Selected</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group pl-3">
+        <div class="custom-control custom-radio">
+            <input type="radio" id="radion_enabled_1" name="customRadio" class="custom-control-input" checked="">
+            <label class="custom-control-label" for="radion_enabled_1">Toggle this custom radio</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" id="radion_enabled_2" name="customRadio" class="custom-control-input">
+            <label class="custom-control-label" for="radion_enabled_2">Or toggle this other custom radio</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" id="radion_disabled_1" name="customRadio" class="custom-control-input" disabled="">
+            <label class="custom-control-label" for="radion_disabled_1">Disabled custom radio</label>
+        </div>
+    </div>
+
+    <div class="form-group col-3">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="switch_enabled_1" checked />
+            <label class="custom-control-label" for="switch_enabled_1">Toggle this switch element</label>
+        </div>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" disabled id="switch_disabled_1" />
+            <label class="custom-control-label" for="switch_disabled_1">Disabled switch element</label>
+        </div>
+    </div>
+
+    <div class="form-group col-3">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="input_selected" checked="">
+            <label class="custom-control-label" for="input_selected">Selected</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="input_not_selected">
+            <label class="custom-control-label" for="input_not_selected">Not Selected</label>
+        </div>
+    </div>
+
+    <div class="form-group col-3">
+        <select class="custom-select" id="select_menu">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+
+    <div class="form-group col-3">
+        <select class="custom-select" id="select_menu_multiple" multiple>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+
+    <div class="form-group col-6">
+        <div class="input-group mb-3">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="input_file">
+                <label class="custom-file-label" for="input_file">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text" id="">Upload</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-md-row flex-column col-6">
+        <input type="range" class="custom-range" id="input_range" min="0" max="100" />
+        <span class="font-weight-bold text-primary ml-2" id="input_range_outcome"></span>
+    </div>
+
+    <div id="for_stale" class="form-group pl-3 mt-2">
+        <div id="for_stale_element" class="alert alert-dismissible alert-success col-3" onclick="stale()" stale="false">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Stale Element.</strong><br /> This element is not stale, click to stale it.
+        </div>
+    </div>
+
+    <input id="input_hidden" type="hidden" value="hidden element" />
+</div>
+
+<div class="form-group" id="for_popup">
+    <div class="alert-info p-2">
+        <h4>ALERTS &amp; POPUPS</h4>
+        <div>For triggering alerts and pop-up elements.</div>
+    </div>
+    <br />
+
+    <div class="d-flex flex-md-row flex-column col-3">
+        <button class="btn btn-primary" id="pop_alert" value="0" onclick="alertCount();">Pop Alert</button>
+        <input class="form-control ml-3" type="text" id="this_number_of_alerts" value="0" disabled />
+        <input class="form-control ml-3" type="number" id="number_of_alerts" value="10" />
+    </div>
+    <br />
+
+    <div class="d-flex flex-md-row flex-column col-3">
+        <button class="btn btn-primary" id="pop_windows" value="0" onclick="openChildWindows(5);">Pop Windows</button>
+        <button class="btn btn-primary ml-2" id="pop_window" value="0" onclick="openChildWindows(1);">Pop Window</button>
+    </div>
+    <br />
+    
+    <div class="d-flex flex-md-row flex-column col-3">
+        <button class="btn btn-primary" id="generate_elements" onclick="forListener();">Start Generate</button>
+        <input type="text" class="form-control ml-2" id="dismissed_elements" value="0" disabled />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="alert-info p-2">
+        <h4>EVENTS</h4>
+        <div>For triggering different JavaScript events (double click, click, context, etc.).</div>
+    </div>
+    <div class="d-flex flex-md-row flex-column col-3 mt-3">
+        <button class="btn btn-primary" id="click_button">Click Me</button>
+        <input type="text" class="form-control ml-2" id="click_outcome" />
+    </div>
+
+    <div class="d-flex flex-md-row flex-column col-3 mt-3">
+        <input type="text" class="form-control" id="over_outcome" value="no mouse over" />
+    </div>
+
+    <div class="d-flex flex-md-row flex-column col-3 mt-3">
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Y</span>
+                </div>
+                <input type="text" class="form-control" id="scroll_y_outcome" />
+            </div>
+        </div>
+
+        <div class="form-group ml-2">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">X</span>
+                </div>
+                <input type="text" class="form-control" id="scroll_x_outcome" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function stale() {
+        // setup
+        var parent = document.getElementById('for_stale')
+        var child = document.getElementById('for_stale_element');
+        var isStale = child.getAttribute('stale') === 'true';
+
+        // HTML
+        var html =
+            '<div id="for_stale_element" class="alert alert-dismissible alert-danger col-3" onclick="stale()" stale="true">' +
+            '    <button type="button" class="close" data-dismiss="alert">&times;</button>' +
+            '    <strong>Stale Element.</strong><br /> This element is stale. Refresh the page to restore it.' +
+            '</div>'
+
+        // exit conditions
+        if (isStale) {
+            return;
+        }
+
+        // stale
+        parent.removeChild(child);
+        parent.insertAdjacentHTML('beforeend', html);
+    }
+
+    function alertCount() {
+        var iterations = parseInt(document.getElementById('number_of_alerts').value);
+        var button = document.getElementById('pop_alert');
+        var value = parseInt(document.getElementById('pop_alert').getAttribute('value'));
+        var thisValue = document.getElementById('this_number_of_alerts');
+
+        if (value >= iterations) {
+            return;
+        }
+
+        button.setAttribute('value', (value + 1).toString());
+        thisValue.setAttribute('value', (value + 1).toString());
+        alert('Testing Alert!');
+    }
+
+    function openChildWindows(numberOfWindows) {
+        for (var i = 0; i < numberOfWindows; i++) {
+            window.open(window.location.href, '_blank');
+        }
+    }
+
+    function forListener() {
+        // setup
+        var parent = document.getElementById('for_popup')
+
+        // HTML
+        var html =
+            '<div class="alert alert-dismissible alert-danger col-3" onclick="deleteRandom(this)">' +
+            '    <strong>Random Element.</strong><br /> This element was randomly generated.' +
+            '</div>'
+
+        var numberOfElements = getRandomArbitrary(5, 10);
+        var waitTime = getRandomArbitrary(1000, 4000)
+
+        // apply random elements
+        parent.insertAdjacentHTML('beforeend', '<br />');
+        for (var i = 0; i < numberOfElements; i++) {
+            setTimeout(function () { parent.insertAdjacentHTML('beforeend', html); }, waitTime);
+        }
+    }
+
+    function deleteRandom(element) {
+        var parent = document.getElementById('for_popup');
+        var dismissed = parseInt(document.getElementById('dismissed_elements').value);
+
+        parent.removeChild(element);
+        dismissed = dismissed + 1;
+
+        document.getElementById('dismissed_elements').setAttribute("value", dismissed.toString());
+    }
+
+    function getRandomArbitrary(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    function setElementScroll() {
+        var e = document.querySelector("#text_area_enabled");
+        document.querySelector("#e_scroll_x_outcome").setAttribute('value', e.scrollLeft);
+        document.querySelector("#e_scroll_y_outcome").setAttribute('value', e.scrollTop);
+    }
+
+    document.querySelector("#text_area_enabled").addEventListener("select", function () {
+        var flag = document.getElementById("e_text_area_selected");
+        flag.setAttribute("checked", "true");
+    }, false);
+
+    document.querySelector("#click_button").addEventListener("dblclick", function (event) {
+        document.getElementById('click_outcome').setAttribute('value', "double on element");
+        event.preventDefault();
+        return false;
+    }, false);
+
+    document.querySelector("#click_button").addEventListener("contextmenu", function (event) {
+        document.getElementById('click_outcome').setAttribute('value', "context on element");
+        event.preventDefault();
+        return false;
+    }, false);
+
+    document.querySelector("#click_button").addEventListener("click", function (event) {
+        document.getElementById('click_outcome').setAttribute('value', "click on element");
+        event.preventDefault();
+        return false;
+    }, false);
+
+    document.querySelector("#over_outcome").addEventListener("mouseover", function (event) {
+        event.target.setAttribute('value', "mouse over");
+    }, false);
+
+    document.querySelector("#over_outcome").addEventListener("mouseout", function (event) {
+        event.target.setAttribute('value', "not mouse over");
+    }, false);
+
+    document.addEventListener("scroll", function () {
+        document.getElementById('scroll_y_outcome').setAttribute('value', window.pageYOffset.toString());
+        document.getElementById('scroll_x_outcome').setAttribute('value', window.pageXOffset.toString());
+        return false;
+    }, false);
+</script>
